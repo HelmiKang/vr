@@ -4,14 +4,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class HandController : MonoBehaviour
+public class gunController : MonoBehaviour
 {
+    
   [SerializeField]
   GameObject bulletPrefab;
 
-  ActionBasedController controller;
+   [SerializeField]
+   Transform barrelEnd;
 
-  void Awake()
+  ActionBasedController controller;
+    // Start is called before the first frame update
+ void Awake()
   {
     controller = GetComponent<ActionBasedController>();
 
@@ -19,7 +23,7 @@ public class HandController : MonoBehaviour
 
   }
 
-  void OnTriggerPress(InputAction.CallbackContext context)
+    void OnTriggerPress(InputAction.CallbackContext context)
   {
     XRRayInteractor interactor = GetComponentInChildren<XRRayInteractor>();
 
@@ -36,10 +40,14 @@ public class HandController : MonoBehaviour
     Instantiate(bulletPrefab, transform.position, transform.rotation);
 
   }
-
-  // Update is called once per frame
-  void Update()
+  public void PullTrigger()
   {
-
+    Instantiate(bulletPrefab, barrelEnd.position, barrelEnd.rotation);
   }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }

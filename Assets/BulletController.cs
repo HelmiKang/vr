@@ -13,8 +13,11 @@ public class BulletController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    private void OnCollisionEnter(Collision other) {
+        if(other.gameObject.tag == "enemy")
+        {
+                Destroy(this.gameObject);
+        }
+
     }
 }
